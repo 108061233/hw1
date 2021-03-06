@@ -14,7 +14,7 @@ with open(cwb_filename) as csvfile:
    for row in mycsv:
       data.append(row)
 
-# Retrive all data points which station id is "C0A880", "C0F9A0", "C0G640", "C0R190", "C0X260" as a list.
+# Retrive all data points which station id are "C0A880", "C0F9A0", "C0G640", "C0R190", "C0X260" as a list.
 target_data = list(filter(lambda item: item['station_id'] == 'C0A880' or item['station_id'] == 'C0F9A0' or 
                                  item['station_id'] == 'C0G640' or item['station_id'] == 'C0R190' or item['station_id'] == 'C0X260', data))
 
@@ -31,16 +31,20 @@ for i in target_data:
    if (i['station_id'] == 'C0A880'):
       # remove '-99.000' and '-999.000' data
       if (i['WDSD'] != '-99.000' and i['WDSD'] != '-999.000'):
-         # the first data we retrive should be deal with
+         # the first data we retrive
          if (index_0 == 0):
             max_0 = float(i['WDSD'])
             min_0 = float(i['WDSD'])
+         # temp for temporarily store the data
          else:
             temp = float(i['WDSD'])
+            # if temp is larger than max, then change the max number with temp number
             if (temp > max_0):
                max_0 = temp
+            # if temp is smaller than min, then change the min number with temp number   
             elif(temp < min_0):
                min_0 = temp
+         # the order increases      
          index_0+=1
    # for data 'C0F9A0' 
    elif (i['station_id'] == 'C0F9A0'):
