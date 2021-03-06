@@ -35,8 +35,8 @@ for i in target_data:
          if (index_0 == 0):
             max_0 = float(i['WDSD'])
             min_0 = float(i['WDSD'])
-         # temp for temporarily store the data
          else:
+            # temp for temporarily store the data
             temp = float(i['WDSD'])
             # if temp is larger than max, then change the max number with temp number
             if (temp > max_0):
